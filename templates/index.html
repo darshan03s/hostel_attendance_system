@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Attendance System</title>
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+</head>
+
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li class="menu-button-close" onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24" viewBox="0 -960 960 960" width="24">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li class="nav-items"><a href="http://127.0.0.1:8000/admin/" target="_blank">Admin</a></li>
+            <li class="nav-items"><a href="#team">Team</a></li>
+            <li class="nav-items"><a href="#loginregister">Login/Register</a></li>
+        </ul>
+        <ul>
+            <li class="logo" id="logo"><a href="#logo">Hostel Attendance System</a></li>
+            <li class="nav-items"><a href="http://127.0.0.1:8000/admin/" target="_blank">Admin</a></li>
+            <li class="nav-items hideOnMobile"><a href="#team">Team</a></li>
+            <li class="nav-items hideOnMobile"><a href="#loginregister">Login/Register</a></li>
+            <li class="menu-button" onclick="showSideBar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24" viewBox="0 -960 960 960" width="24">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+
+    </nav>
+
+    <main>
+        <div class="banner">
+            <img src="../static/images/college2.jpg" alt="banner" height="250" width="100%">
+        </div>
+
+        <div class="login-page" id="loginregister">
+
+            <form class="form login-form" method="post" action="/">
+                {% csrf_token %}
+                <h2>Login/Logout</h2>
+                <div class="input-box">
+                    <input type="text" id="logusn" required placeholder="USN" name="logusn" autofocus oninput="capitalizeInput(this)">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="logpassword" required placeholder="Password" name="logpassword"
+                        autofocus >
+                </div>
+                <input type="hidden" id="action" name="action">
+                <button type="submit" name="action" value="login">Login</button>
+                <button type="submit" name="action" value="logout">Logout</button>
+                <p class="message">Register here <a class="register-btn" href="#">Register</a></p>
+            </form>
+
+            <form class="form registration-form" method="post" action="/">
+                {% csrf_token %}
+                <h2>Register</h2>
+                <div class="input-box">
+                    <input type="text" id="regusername" required placeholder="Student Name" name="regusername" autofocus
+                        oninput="capitalizeInput(this)">
+                </div>
+                <div class="input-box">
+                    <input type="text" id="regusn" required placeholder="Enter USN" name="regusn" autofocus
+                        oninput="capitalizeInput(this)">
+                </div>
+                <div class="input-box">
+                    <input type="text" id="regbranch" required placeholder="Enter Branch" name="regbranch" autofocus
+                        oninput="capitalizeInput(this)">
+                </div>
+                <div class="input-box">
+                    <input type="text" id="regphone" required placeholder="Enter Phone No" name="regphone" autofocus>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="regpasssword" required placeholder="Create Password" name="regpassword"
+                        autofocus>
+                </div>
+                <button type="submit" name="action" value="register">Register</button>
+                <p class="message">Already Registered?<a class="login-btn" href="#">Login/Logout</a></p>
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col" id="team">
+                    <h4>Team</h4>
+                    <ul>
+                        <li><a href="#">Adithya B M </a></li>
+                        <li><a href="#">Chinmay R Gejji</a></li>
+                        <li><a href="#">Darshan S</a></li>
+                        <li><a href="#">Gagan B R</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" id="techstack">
+                    <h4>Tech Stack</h4>
+                    <ul>
+                        <li><a href="#">HTML, CSS</a></li>
+                        <li><a href="#">Django</a></li>
+                        <li><a href="#">MySQL</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        function capitalizeInput(input) {
+            let value = input.value;
+            value = value.toUpperCase();
+            input.value = value;
+        }
+        function setAction(action) {
+            document.getElementById('action').value = action;
+            document.querySelector('.login-form').submit();
+        }
+        function showSideBar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const register = document.querySelector('.register-btn');
+            const login = document.querySelector('.login-btn');
+            const loginForm = document.querySelector('.login-form');
+            const registrationForm = document.querySelector('.registration-form');
+
+            register.addEventListener('click', function (event) {
+                event.preventDefault();
+                showRegister();
+            });
+
+            login.addEventListener('click', function (event) {
+                event.preventDefault();
+                showLogin();
+            });
+
+            function showRegister() {
+                registrationForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            }
+
+            function showLogin() {
+                registrationForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+
+            function showRegResponse() {
+                let username = document.getElementById('regusername').value;
+                let usn = document.getElementById('regusn').value;
+                let password = document.getElementById('regpasssword').value;
+
+                let formData = new FormData();
+                formData.append('regusername', username);
+                formData.append('regusn', usn);
+                formData.append('regpassword', password);
+
+                fetch('/', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            window.location.href = '/';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>
