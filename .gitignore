@@ -5,3 +5,4 @@ screenshots.zip
 test_templates/
 db.sqlite3-wal
 django_notes.txt
+.vscode/
