@@ -6,3 +6,13 @@ test_templates/
 db.sqlite3-wal
 django_notes.txt
 .vscode/
+.idea/
+
+!attendance/** 
+!attendance_system/** 
+!static/** 
+!templates/** 
+!.gitignore
+!db.sqlite3
+!manage.py
+!README.md
