@@ -1,12 +1,4 @@
-app.zip
-db.sqlite3-shm
-screenshots/
-screenshots.zip
-test_templates/
-db.sqlite3-wal
-django_notes.txt
-.vscode/
-.idea/
+*
 
 !attendance/** 
 !attendance_system/** 
@@ -16,3 +8,4 @@ django_notes.txt
 !db.sqlite3
 !manage.py
 !README.md
+!mysql.sql
