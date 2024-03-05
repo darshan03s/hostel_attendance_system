@@ -83,12 +83,8 @@ def index(request):
         update_attendance() 
         print('Attendance Updated')
         update_executed_today = True
+    
+    
+    # update_attendance() 
+    # print('Attendance Updated')
     return render(request, 'index.html')
-
-
-
-
-
-
-
-    # if current_time >= cutoff_datetime.time():

@@ -55,18 +55,11 @@ def update_attendance():
                     if not existing_attendance:  # If attendance does not exist, create a new entry
                         if last_login_time_time <= cutoff_time:
                             attendance_status = 'PRESENT'
-                        else:
-                            attendance_status = 'ABSENT'
                         
                         TodaysAttendance.objects.create(
                             STUDENT_NAME=student_name,
-                            USN=usn,
+                            USN=Register.objects.get(USN=usn),
                             BRANCH=branch,
                             LAST_LOGIN=last_login_time,
                             ATTENDANCE=attendance_status  
                         )
-
-
-
-# update_attendance()
-# TodaysAttendance.objects.all().delete()

@@ -21,7 +21,7 @@ class LoginLogout(models.Model):
 # TodaysAttendance
 class TodaysAttendance(models.Model):
     STUDENT_NAME = models.CharField(max_length=100)
-    USN = models.CharField(max_length=10, default=None)
+    USN = models.ForeignKey(Register, on_delete=models.CASCADE, default=None)
     BRANCH = models.CharField(max_length=5)
     LAST_LOGIN = models.DateTimeField()
     ATTENDANCE = models.CharField(max_length=10)
