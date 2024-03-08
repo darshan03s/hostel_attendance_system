@@ -11,3 +11,4 @@
 !mysql.sql
 !requirements.txt
 !venv/** 
+!run_server.bat
