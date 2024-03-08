@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import time, datetime
+from datetime import datetime
 
 # Register Table
 class Register(models.Model):

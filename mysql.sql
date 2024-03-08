@@ -4,6 +4,8 @@ SELECT * FROM final_dbms3.attendance_loginlogout ORDER BY id DESC;
 
 SELECT * FROM final_dbms3.attendance_todaysattendance ORDER BY id DESC ;
 
+
+-- MySQL equivalent code for Django Models
 -- Register Table
 CREATE TABLE Register (
     STUDENT_NAME VARCHAR(100),
