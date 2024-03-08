@@ -48,7 +48,7 @@ def login_logout_student(request, action):
     usn_pass_dict = {usn: password for usn, password in passwords_list}
     if logpassword != usn_pass_dict[logusn]:                            #check if usn matches with students created password
         return HttpResponse('Invalid Password')
-    status = action.upper()
+    status = action.upper()                                             #convert string to uppercase
     curr_time = datetime.today().strftime("%Y-%m-%d %H:%M:%S")          #store login date-time
     login_logout = LoginLogout(USN=register_instance, PASSWORD=logpassword, STATUS=status, LOGIN_LOGOUT_TIME=curr_time)
     login_logout.save()

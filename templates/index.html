@@ -42,8 +42,10 @@
 
         <div class="login-page" id="loginregister">
 
+            <!-- Login Form -->
             <form class="form login-form" method="post" action="/">
-                {% csrf_token %}
+                <!-- Django form validation mechanism -->
+                {% csrf_token %}                            
                 <h2>Login/Logout</h2>
                 <div class="input-box">
                     <input type="text" id="logusn" required placeholder="USN" name="logusn" autofocus oninput="capitalizeInput(this)">
@@ -57,7 +59,8 @@
                 <button type="submit" name="action" value="logout">Logout</button>
                 <p class="message">Register here <a class="register-btn" href="#">Register</a></p>
             </form>
-
+            
+            <!-- Register Form  -->
             <form class="form registration-form" method="post" action="/">
                 {% csrf_token %}
                 <h2>Register</h2>
@@ -121,10 +124,6 @@
             value = value.toUpperCase();
             input.value = value;
         }
-        function setAction(action) {
-            document.getElementById('action').value = action;
-            document.querySelector('.login-form').submit();
-        }
         function showSideBar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.display = 'flex';
@@ -158,33 +157,6 @@
             function showLogin() {
                 registrationForm.style.display = 'none';
                 loginForm.style.display = 'block';
-            }
-
-            function showRegResponse() {
-                let username = document.getElementById('regusername').value;
-                let usn = document.getElementById('regusn').value;
-                let password = document.getElementById('regpasssword').value;
-
-                let formData = new FormData();
-                formData.append('regusername', username);
-                formData.append('regusn', usn);
-                formData.append('regpassword', password);
-
-                fetch('/', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alert(data.error);
-                        } else {
-                            window.location.href = '/';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
             }
         });
     </script>
