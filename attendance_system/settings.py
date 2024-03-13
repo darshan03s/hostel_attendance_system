@@ -79,21 +79,13 @@ WSGI_APPLICATION = 'attendance_system.wsgi.application'
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
-#     },
-#     'mysql': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'final_dbms',
-#         'USER': 'darshans',
-#         'PASSWORD': 'darshans',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
 #     }
 # }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'final_dbms3',
+        'NAME': 'test',
         'USER': 'darshans',
         'PASSWORD': 'darshans',
         'HOST': 'localhost',  # or the hostname where your MySQL server is running

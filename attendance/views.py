@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from datetime import datetime, date, time
+import datetime as dt
 from attendance.models import Register, LoginLogout
 import re
 from attendance.update_attendance import update_attendance
@@ -24,7 +25,7 @@ def register_student(request):
     regbranch = request.POST.get('regbranch')
     regphone = request.POST.get('regphone')
     regpassword = request.POST.get('regpassword')
-    regdate = datetime.now()                                            #get current date and time
+    regdate = dt.date.today()                                            #get current date and time
     
     """Create register object and save the details"""
     registration = Register(STUDENT_NAME=regusername, USN=regusn, BRANCH=regbranch, PHONE=regphone, PASSWORD=regpassword, REGISTRATION_DATE=regdate)
@@ -52,6 +53,10 @@ def login_logout_student(request, action):
     curr_time = datetime.today().strftime("%Y-%m-%d %H:%M:%S")          #store login date-time
     login_logout = LoginLogout(USN=register_instance, PASSWORD=logpassword, STATUS=status, LOGIN_LOGOUT_TIME=curr_time)
     login_logout.save()
+    
+def test():
+    update_attendance()
+    print('Attendance Updated')
 
 def index(request):
     global update_executed_today
@@ -75,7 +80,6 @@ def index(request):
         
         
     """For testing purpose"""
-    # update_attendance()
-    # print('Attendance Updated')
+    test()
 
     return render(request, 'index.html')                                #return the html page stored in templates folder using render method
