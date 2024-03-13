@@ -1,0 +1,116 @@
+[
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "mysql.connector",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mysql.connector",
+        "description": "mysql.connector",
+        "detail": "mysql.connector",
+        "documentation": {}
+    },
+    {
+        "label": "clear_todaysattendance",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def clear_todaysattendance():\n    cursor = conn.cursor()\n    table_name = \"attendance_todaysattendance\"\n    delete_query = f\"DELETE FROM {table_name};\"\n    cursor.execute(delete_query)\n    conn.commit()\n    cursor.close()\n    conn.close()\ndef clear_loginlogout():\n    cursor = conn.cursor()",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "clear_loginlogout",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def clear_loginlogout():\n    cursor = conn.cursor()\n    table_name = \"attendance_loginlogout\"\n    delete_query = f\"DELETE FROM {table_name};\"\n    cursor.execute(delete_query)\n    conn.commit()\n    cursor.close()\n    conn.close()\ndef clear_register():\n    cursor = conn.cursor()",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "clear_register",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def clear_register():\n    cursor = conn.cursor()\n    table_name = \"attendance_register\"\n    delete_query = f\"DELETE FROM {table_name};\"\n    cursor.execute(delete_query)\n    conn.commit()\n    cursor.close()\n    conn.close()\ndef dummy_data_register():\n    cursor = conn.cursor()",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "dummy_data_register",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def dummy_data_register():\n    cursor = conn.cursor()\n    with open('register_dummy_data.sql', 'r') as sql_file:\n        sql_script = sql_file.read()\n    sql_statements = sql_script.split(';')\n    for statement in sql_statements:\n        if statement.strip():  # Ignore empty statements\n            try:\n                cursor.execute(statement)\n            except mysql.connector.IntegrityError as e:",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "dummy_data_loginlogout_all",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def dummy_data_loginlogout_all():\n    cursor = conn.cursor()\n    cursor.execute(\"SELECT USN, PASSWORD FROM attendance_register\")\n    existing_records = cursor.fetchall()\n    statuses = ['LOGIN', 'LOGOUT']\n    dummy_data = []\n    for usn, password in existing_records:\n        status = random.choice(statuses)\n        current_date = datetime.now().date()\n        start_time = time(6, 0, 0)  # 06:00",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "dummy_data_loginlogout_subset",
+        "kind": 2,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "def dummy_data_loginlogout_subset():\n    cursor = conn.cursor()\n    command = f\"SELECT USN, PASSWORD FROM attendance_register LIMIT {LIMIT}\"\n    cursor.execute(command)\n    existing_records = cursor.fetchall()\n    num_dummy_records = 3\n    dummy_data = []\n    for usn, password in existing_records:\n        # Initialize the count of login and logout records\n        login_count = 0",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "conn",
+        "kind": 5,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "conn = mysql.connector.connect(\n    host=\"localhost\",\n    user=\"darshans\",\n    password=\"darshans\",\n    database=\"test\"\n)\nLIMIT = 50\ndef clear_todaysattendance():\n    cursor = conn.cursor()\n    table_name = \"attendance_todaysattendance\"",
+        "detail": "test_ll",
+        "documentation": {}
+    },
+    {
+        "label": "LIMIT",
+        "kind": 5,
+        "importPath": "test_ll",
+        "description": "test_ll",
+        "peekOfCode": "LIMIT = 50\ndef clear_todaysattendance():\n    cursor = conn.cursor()\n    table_name = \"attendance_todaysattendance\"\n    delete_query = f\"DELETE FROM {table_name};\"\n    cursor.execute(delete_query)\n    conn.commit()\n    cursor.close()\n    conn.close()\ndef clear_loginlogout():",
+        "detail": "test_ll",
+        "documentation": {}
+    }
+]

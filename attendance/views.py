@@ -80,6 +80,6 @@ def index(request):
         
         
     """For testing purpose"""
-    test()
+    # test()
 
     return render(request, 'index.html')                                #return the html page stored in templates folder using render method
