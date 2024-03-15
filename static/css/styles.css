@@ -116,10 +116,10 @@ nav li:first-child {
 /* Navbar end */
 
 /* Banner */
-.banner img {
-    object-fit: cover;
-    object-position: bottom;
-}
+/* .banner img { 
+    object-fit: fill;
+    object-position: top;
+} */
 
 /* Banner end  */
 

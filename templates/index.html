@@ -22,12 +22,16 @@
             <li class="nav-items"><a href="#team">Team</a></li>
             <li class="nav-items"><a href="#loginregister">Login/Register</a></li>
         </ul>
+        
         <ul>
             <li class="logo" id="logo"><a href="#logo">Hostel Attendance System</a></li>
             <li class="nav-items hideOnMobile"><a href="http://127.0.0.1:8000/admin/" target="_blank">Admin</a></li>
             <li class="nav-items hideOnMobile"><a href="#team">Team</a></li>
             <li class="nav-items hideOnMobile"><a href="#loginregister">Login/Register</a></li>
-            <li class="nav-items hideOnMobile"><a href="https://github.com/darshan03s/hostel_attendance_system/tree/main" target="_blank"><img src="../static/images/github-mark.png" alt="github" height="28" width="28"></a></li>
+            <!-- <li class="nav-items hideOnMobile"><a
+                    href="https://github.com/darshan03s/hostel_attendance_system/tree/main" target="_blank"><img
+                        src="../static/images/github-mark.png" alt="github" height="28" width="28"></a>
+            </li> -->
             <li class="menu-button" onclick="showSideBar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                         height="24" viewBox="0 -960 960 960" width="24">
                         <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
@@ -38,7 +42,7 @@
 
     <main>
         <div class="banner">
-            <img src="../static/images/college2.jpg" alt="banner" height="250" width="100%">
+            <img src="../static/images/gmit.png" alt="banner" height="250" width="100%" style="object-fit: fill;">
         </div>
 
         <div class="login-page" id="loginregister">
@@ -46,21 +50,22 @@
             <!-- Login Form -->
             <form class="form login-form" method="post" action="/">
                 <!-- Django form validation mechanism -->
-                {% csrf_token %}                            
+                {% csrf_token %}
                 <h2>Login/Logout</h2>
                 <div class="input-box">
-                    <input type="text" id="logusn" required placeholder="USN" name="logusn" autofocus oninput="capitalizeInput(this)">
+                    <input type="text" id="logusn" required placeholder="USN" name="logusn" autofocus
+                        oninput="capitalizeInput(this)">
                 </div>
                 <div class="input-box">
                     <input type="password" id="logpassword" required placeholder="Password" name="logpassword"
-                        autofocus >
+                        autofocus>
                 </div>
                 <input type="hidden" id="action" name="action">
                 <button type="submit" name="action" value="login">Login</button>
                 <button type="submit" name="action" value="logout">Logout</button>
-                <p class="message">Register here <a class="register-btn" href="#">Register</a></p>
+                <p class="message"><a class="register-btn" href="#">Register here</a></p>
             </form>
-            
+
             <!-- Register Form  -->
             <form class="form registration-form" method="post" action="/">
                 {% csrf_token %}
@@ -108,7 +113,7 @@
                 <div class="footer-col" id="techstack">
                     <h4>Tech Stack</h4>
                     <ul>
-                        <li><a href="#">HTML, CSS</a></li>
+                        <li><a href="#">HTML, CSS, Javascript</a></li>
                         <li><a href="#">Django</a></li>
                         <li><a href="#">MySQL</a></li>
                     </ul>
@@ -117,7 +122,12 @@
         </div>
     </footer>
 
-
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %}
+    <script>alert("{{ message }}")</script> {% endif %}
+    {% endfor %}
+    {% endif %}
 
     <script>
         function capitalizeInput(input) {
@@ -160,6 +170,8 @@
                 loginForm.style.display = 'block';
             }
         });
+
+
     </script>
 </body>
 
