@@ -1,12 +1,12 @@
 *
 
-!attendance/** 
-!attendance_system/** 
-!static/** 
-!templates/** 
-!.gitignore
-!manage.py
-!README.md
-!mysql.sql
-!requirements.txt
-!test_data/** 
+!./attendance/** 
+!./attendance_system/** 
+!./static/** 
+!./templates/** 
+!./.gitignore
+!./manage.py
+!./README.md
+!./mysql.sql
+!./requirements.txt
+!./test_data/** 
