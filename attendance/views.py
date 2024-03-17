@@ -12,6 +12,6 @@ def index(request):
             elif action == 'logout':
                 login_logout_student(request, action)
                 
-    run_update(request, test=True)
+    run_update(request, test=False)
     
     return render(request, 'index.html')        

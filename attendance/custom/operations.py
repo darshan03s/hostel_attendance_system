@@ -1,5 +1,4 @@
 from django.shortcuts import redirect
-# from datetime import datetime, date, time
 import datetime 
 from attendance.models import Register, LoginLogout
 import re
@@ -60,31 +59,17 @@ def login_logout_student(request, action):
     login_logout.save()
     messages.success(request, f'{logusn} {status}')
     
-# def run_update(request, test=False):
-#     current_time = datetime.datetime.now().time()                                
-#     cutoff_datetime = datetime.datetime.combine(datetime.date.today(), datetime.time(21, 0))     
-#     update_executed_today = False
-#     if not update_executed_today:
-#         if current_time > cutoff_datetime.time():    
-#             update_attendance()                         
-#             messages.success(request, f'Attendance updated at {datetime.now().strftime("%H:%M:%S")}')
-#             update_executed_today = True
-#     if test==True:
-#         update_attendance()                         
-#         messages.success(request, f'Attendance updated at {datetime.now().strftime("%H:%M:%S")}')
-
-
+    
 def run_update(request, test=False):
-    current_time = datetime.datetime.now().time()
-    cutoff_time = datetime.time(21, 0)  # 9:00 PM
-    today_date = datetime.date.today()
-    cutoff_datetime = datetime.datetime.combine(today_date, cutoff_time)
-    attendance_updated_today = False
-    if not test:
-        if current_time > cutoff_datetime and not attendance_updated_today:
-            update_attendance()
-            attendance_updated_today = True
-            messages.success(request, f'Attendance updated at {datetime.datetime.now().strftime("%H:%M:%S")}')
+    current_time = datetime.datetime.now().time()                                
+    cutoff_datetime = datetime.datetime.combine(datetime.date.today(), datetime.time(21, 0))     
+    update_executed_today = False
+    if test==False:
+        if not update_executed_today:
+            if current_time > cutoff_datetime.time():    
+                update_attendance()                         
+                messages.success(request, f'Attendance updated at {datetime.now().strftime("%H:%M:%S")}')
+                update_executed_today = True
     else:
-        update_attendance()
-        messages.success(request, f'Attendance updated at {datetime.datetime.now().strftime("%H:%M:%S")}')
+        update_attendance()                         
+        messages.success(request, f'Attendance updated at {datetime.now().strftime("%H:%M:%S")}')
